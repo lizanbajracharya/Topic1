@@ -6,12 +6,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <EditText
+    <TextView
+        android:id="@+id/tvAnswer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="right"
-        android:text="0"
+        android:textSize="25dp" />
+
+    <EditText
+        android:id="@+id/etNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
         android:textSize="50dp" />
+
 
     <GridLayout
         android:layout_width="match_parent"
@@ -33,7 +41,9 @@
             android:id="@+id/btnTwo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_row="0"
             android:layout_rowWeight="1"
+            android:layout_column="1"
             android:layout_columnWeight="1"
             android:text="2"
             android:textSize="25dp" />
@@ -144,12 +154,12 @@
             android:text="0"
             android:textSize="25dp" />
         <Button
-            android:id="@+id/btnComma"
+            android:id="@+id/btnDivide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:text=","
+            android:text="/"
             android:textSize="25dp" />
         <Button
             android:id="@+id/btnEqual"
