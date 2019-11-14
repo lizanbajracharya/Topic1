@@ -10,6 +10,7 @@
         android:id="@+id/tvAnswer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Result"
         android:gravity="right"
         android:textSize="25dp" />
 
@@ -18,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="right"
+        android:enabled="false"
         android:textSize="50dp" />
 
 

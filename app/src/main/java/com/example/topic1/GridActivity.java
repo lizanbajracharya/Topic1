@@ -12,7 +12,10 @@ import android.widget.TextView;
 public class GridActivity extends AppCompatActivity {
     EditText etNumber;
     TextView tvAnswer;
-    Boolean checkadd,checksub,checkmultiply,checkdivide;
+    Boolean checkadd;
+    Boolean checksub;
+    Boolean checkmultiply;
+    Boolean checkdivide;
     float number;
     Button btnOne,btnTwo,btnThree,btnFour,btnFive,btnSix,btnSeven,btnEight,btnNine,btnZero,btnDivide,btnStop,btnEqual,btnMultiply,btnPlus,btnSub;
     @Override
@@ -20,6 +23,7 @@ public class GridActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grid);
 
+        tvAnswer=findViewById(R.id.tvAnswer);
         etNumber=findViewById(R.id.etNumber);
         btnOne=findViewById(R.id.btnOne);
         btnTwo=findViewById(R.id.btnTwo);
@@ -241,28 +245,32 @@ public class GridActivity extends AppCompatActivity {
                 {
                     Arithmetic arithmetic=new Arithmetic("Plus");
                     Float result = arithmetic.Calculate(number,number2);
-                    etNumber.setText(Float.toString(result));
+                    tvAnswer.setText(number+"+"+number2+"="+result);
+                    etNumber.setText(null);
                     checkadd=false;
                 }
                 else if(checksub==true)
                 {
                     Arithmetic arithmetic=new Arithmetic("Sub");
                     Float result=arithmetic.Calculate(number,number2);
-                    etNumber.setText(Float.toString(result));
+                    tvAnswer.setText(number+"-"+number2+"="+result);
+                    etNumber.setText(null);
                     checksub=false;
                 }
                 else if(checkmultiply==true)
                 {
                     Arithmetic arithmetic=new Arithmetic("Multiply");
                     Float result = arithmetic.Calculate(number,number2);
-                    etNumber.setText(Float.toString(result));
+                    tvAnswer.setText(number+"*"+number2+"="+result);
+                    etNumber.setText(null);
                     checkmultiply=false;
                 }
                 else if(checkdivide==true)
                 {
                     Arithmetic arithmetic=new Arithmetic("Divide");
                     Float result = arithmetic.Calculate(number,number2);
-                    etNumber.setText(Float.toString(result));
+                    tvAnswer.setText(number+"/"+number2+"="+result);
+                    etNumber.setText(null);
                     checkdivide=false;
                 }
             }
