@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,6 +49,7 @@ public class GridActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(etNumber.getText()))
                 {
                     etNumber.setText("1");
+                    return;
                 }
                 else
                     {
@@ -62,6 +64,7 @@ public class GridActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(etNumber.getText()))
                 {
                     etNumber.setText("2");
+                    return;
                 }
                 else
                 {
@@ -76,6 +79,7 @@ public class GridActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(etNumber.getText()))
                 {
                     etNumber.setText("3");
+                    return;
                 }
                 else
                 {
@@ -90,6 +94,7 @@ public class GridActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(etNumber.getText()))
                 {
                     etNumber.setText("4");
+                    return;
                 }
                 else
                 {
@@ -104,6 +109,7 @@ public class GridActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(etNumber.getText()))
                 {
                     etNumber.setText("5");
+                    return;
                 }
                 else
                 {
@@ -118,6 +124,7 @@ public class GridActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(etNumber.getText()))
                 {
                     etNumber.setText("6");
+                    return;
                 }
                 else
                 {
@@ -132,6 +139,7 @@ public class GridActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(etNumber.getText()))
                 {
                     etNumber.setText("7");
+                    return;
                 }
                 else
                 {
@@ -146,6 +154,7 @@ public class GridActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(etNumber.getText()))
                 {
                     etNumber.setText("8");
+                    return;
                 }
                 else
                 {
@@ -160,6 +169,7 @@ public class GridActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(etNumber.getText()))
                 {
                     etNumber.setText("9");
+                    return;
                 }
                 else
                 {
@@ -174,6 +184,7 @@ public class GridActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(etNumber.getText()))
                 {
                     etNumber.setText("0");
+                    return;
                 }
                 else
                 {
@@ -185,21 +196,34 @@ public class GridActivity extends AppCompatActivity {
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-            Arithmetic arithmetic=new Arithmetic("Plus");
-            checkadd=arithmetic.Check();
-            number=Float.parseFloat(etNumber.getText().toString());
-            etNumber.setText(null);
+                if(TextUtils.isEmpty(etNumber.getText()))
+                {
+                    etNumber.setError("Enter number");
+                    return;
+                }
+                else {
+                    Arithmetic arithmetic = new Arithmetic("Plus");
+                    checkadd = arithmetic.Check();
+                    number = Float.parseFloat(etNumber.getText().toString());
+                    etNumber.setText(null);
+                }
             }
         });
 
         btnSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Arithmetic arithmetic=new Arithmetic("Sub");
-                checksub=arithmetic.Check();
-                number=Float.parseFloat(etNumber.getText().toString());
-                etNumber.setText(null);
+                if(TextUtils.isEmpty(etNumber.getText()))
+                {
+                    etNumber.setError("Enter number");
+                    return;
+                }
+                else {
+                    Arithmetic arithmetic = new Arithmetic("Sub");
+                    checksub = arithmetic.Check();
+                    number = Float.parseFloat(etNumber.getText().toString());
+                    etNumber.setText(null);
+                }
             }
         });
 
@@ -209,6 +233,7 @@ public class GridActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(etNumber.getText()))
                 {
                     etNumber.setText(".");
+                    return;
                 }
                 else
                 {
@@ -220,20 +245,34 @@ public class GridActivity extends AppCompatActivity {
         btnMultiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Arithmetic arithmetic=new Arithmetic("Multiply");
-                checkmultiply=arithmetic.Check();
-                number=Float.parseFloat(etNumber.getText().toString());
-                etNumber.setText(null);
+                if(TextUtils.isEmpty(etNumber.getText()))
+                {
+                    etNumber.setError("Enter number");
+                    return;
+                }
+                else {
+                    Arithmetic arithmetic = new Arithmetic("Multiply");
+                    checkmultiply = arithmetic.Check();
+                    number = Float.parseFloat(etNumber.getText().toString());
+                    etNumber.setText(null);
+                }
             }
         });
 
         btnDivide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(TextUtils.isEmpty(etNumber.getText()))
+                {
+                    etNumber.setError("Enter number");
+                    return;
+                }
+                else{
                 Arithmetic arithmetic=new Arithmetic("Divide");
                 checkdivide=arithmetic.Check();
                 number=Float.parseFloat(etNumber.getText().toString());
                 etNumber.setText(null);
+                }
             }
         });
 
@@ -241,37 +280,37 @@ public class GridActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 float number2=Float.parseFloat(etNumber.getText().toString());
-                if(checkadd==true)
+                if(TextUtils.isEmpty(etNumber.getText()))
                 {
-                    Arithmetic arithmetic=new Arithmetic("Plus");
-                    Float result = arithmetic.Calculate(number,number2);
-                    tvAnswer.setText(number+"+"+number2+"="+result);
-                    etNumber.setText(null);
-                    checkadd=false;
+                    etNumber.setError("Enter number");
+                    return;
                 }
-                else if(checksub==true)
-                {
-                    Arithmetic arithmetic=new Arithmetic("Sub");
-                    Float result=arithmetic.Calculate(number,number2);
-                    tvAnswer.setText(number+"-"+number2+"="+result);
-                    etNumber.setText(null);
-                    checksub=false;
-                }
-                else if(checkmultiply==true)
-                {
-                    Arithmetic arithmetic=new Arithmetic("Multiply");
-                    Float result = arithmetic.Calculate(number,number2);
-                    tvAnswer.setText(number+"*"+number2+"="+result);
-                    etNumber.setText(null);
-                    checkmultiply=false;
-                }
-                else if(checkdivide==true)
-                {
-                    Arithmetic arithmetic=new Arithmetic("Divide");
-                    Float result = arithmetic.Calculate(number,number2);
-                    tvAnswer.setText(number+"/"+number2+"="+result);
-                    etNumber.setText(null);
-                    checkdivide=false;
+                else {
+                    if (checkadd == true) {
+                        Arithmetic arithmetic = new Arithmetic("Plus");
+                        Float result = arithmetic.Calculate(number, number2);
+                        tvAnswer.setText(number + "+" + number2 + "=" + result);
+                        etNumber.setText(null);
+                        checkadd = false;
+                    } else if (checksub == true) {
+                        Arithmetic arithmetic = new Arithmetic("Sub");
+                        Float result = arithmetic.Calculate(number, number2);
+                        tvAnswer.setText(number + "-" + number2 + "=" + result);
+                        etNumber.setText(null);
+                        checksub = false;
+                    } else if (checkmultiply == true) {
+                        Arithmetic arithmetic = new Arithmetic("Multiply");
+                        Float result = arithmetic.Calculate(number, number2);
+                        tvAnswer.setText(number + "*" + number2 + "=" + result);
+                        etNumber.setText(null);
+                        checkmultiply = false;
+                    } else if (checkdivide == true) {
+                        Arithmetic arithmetic = new Arithmetic("Divide");
+                        Float result = arithmetic.Calculate(number, number2);
+                        tvAnswer.setText(number + "/" + number2 + "=" + result);
+                        etNumber.setText(null);
+                        checkdivide = false;
+                    }
                 }
             }
         });
