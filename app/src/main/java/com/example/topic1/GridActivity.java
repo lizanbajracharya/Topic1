@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class GridActivity extends AppCompatActivity {
     EditText etNumber;
@@ -55,6 +56,7 @@ public class GridActivity extends AppCompatActivity {
                     {
                     etNumber.setText(etNumber.getText() + "1");
                 }
+                tvAnswer.setText(etNumber.getText()+"1");
             }
         });
 
@@ -70,6 +72,7 @@ public class GridActivity extends AppCompatActivity {
                 {
                     etNumber.setText(etNumber.getText() + "2");
                 }
+                tvAnswer.setText(etNumber.getText()+"2");
             }
         });
 
@@ -85,6 +88,7 @@ public class GridActivity extends AppCompatActivity {
                 {
                     etNumber.setText(etNumber.getText() + "3");
                 }
+                tvAnswer.setText(etNumber.getText()+"3");
             }
         });
 
@@ -100,6 +104,7 @@ public class GridActivity extends AppCompatActivity {
                 {
                     etNumber.setText(etNumber.getText() + "4");
                 }
+                tvAnswer.setText(etNumber.getText()+"4");
             }
         });
 
@@ -115,6 +120,7 @@ public class GridActivity extends AppCompatActivity {
                 {
                     etNumber.setText(etNumber.getText() + "5");
                 }
+                tvAnswer.setText(etNumber.getText()+"5");
             }
         });
 
@@ -130,6 +136,7 @@ public class GridActivity extends AppCompatActivity {
                 {
                     etNumber.setText(etNumber.getText() + "6");
                 }
+                tvAnswer.setText(etNumber.getText()+"6");
             }
         });
 
@@ -145,6 +152,7 @@ public class GridActivity extends AppCompatActivity {
                 {
                     etNumber.setText(etNumber.getText() + "7");
                 }
+                tvAnswer.setText(etNumber.getText()+"7");
             }
         });
 
@@ -160,6 +168,7 @@ public class GridActivity extends AppCompatActivity {
                 {
                     etNumber.setText(etNumber.getText() + "8");
                 }
+                tvAnswer.setText(etNumber.getText()+"8");
             }
         });
 
@@ -175,6 +184,7 @@ public class GridActivity extends AppCompatActivity {
                 {
                     etNumber.setText(etNumber.getText() + "9");
                 }
+                tvAnswer.setText(etNumber.getText()+"9");
             }
         });
 
@@ -190,6 +200,7 @@ public class GridActivity extends AppCompatActivity {
                 {
                     etNumber.setText(etNumber.getText() + "0");
                 }
+                tvAnswer.setText(etNumber.getText()+"0");
             }
         });
 
@@ -207,6 +218,7 @@ public class GridActivity extends AppCompatActivity {
                     number = Float.parseFloat(etNumber.getText().toString());
                     etNumber.setText(null);
                 }
+                tvAnswer.setText(etNumber.getText()+"+");
             }
         });
 
@@ -221,9 +233,11 @@ public class GridActivity extends AppCompatActivity {
                 else {
                     Arithmetic arithmetic = new Arithmetic("Sub");
                     checksub = arithmetic.Check();
+                    Toast.makeText(GridActivity.this, "Status "+ checksub, Toast.LENGTH_SHORT).show();
                     number = Float.parseFloat(etNumber.getText().toString());
                     etNumber.setText(null);
                 }
+                tvAnswer.setText(etNumber.getText()+"-");
             }
         });
 
@@ -239,6 +253,7 @@ public class GridActivity extends AppCompatActivity {
                 {
                     etNumber.setText(etNumber.getText() + ".");
                 }
+                tvAnswer.setText(etNumber.getText()+".");
             }
         });
 
@@ -256,6 +271,7 @@ public class GridActivity extends AppCompatActivity {
                     number = Float.parseFloat(etNumber.getText().toString());
                     etNumber.setText(null);
                 }
+                tvAnswer.setText(etNumber.getText()+"*");
             }
         });
 
@@ -273,6 +289,7 @@ public class GridActivity extends AppCompatActivity {
                 number=Float.parseFloat(etNumber.getText().toString());
                 etNumber.setText(null);
                 }
+                tvAnswer.setText(etNumber.getText()+"/");
             }
         });
 
@@ -286,18 +303,17 @@ public class GridActivity extends AppCompatActivity {
                     return;
                 }
                 else {
+
                     if (checkadd == true) {
                         Arithmetic arithmetic = new Arithmetic("Plus");
                         Float result = arithmetic.Calculate(number, number2);
                         tvAnswer.setText(number + "+" + number2 + "=" + result);
                         etNumber.setText(null);
-                        checkadd = false;
                     } else if (checksub == true) {
                         Arithmetic arithmetic = new Arithmetic("Sub");
                         Float result = arithmetic.Calculate(number, number2);
                         tvAnswer.setText(number + "-" + number2 + "=" + result);
                         etNumber.setText(null);
-                        checksub = false;
                     } else if (checkmultiply == true) {
                         Arithmetic arithmetic = new Arithmetic("Multiply");
                         Float result = arithmetic.Calculate(number, number2);
@@ -310,6 +326,8 @@ public class GridActivity extends AppCompatActivity {
                         tvAnswer.setText(number + "/" + number2 + "=" + result);
                         etNumber.setText(null);
                         checkdivide = false;
+                    } else {
+                        Toast.makeText(GridActivity.this, "MC", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
